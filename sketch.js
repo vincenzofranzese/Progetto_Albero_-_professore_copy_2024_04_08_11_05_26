@@ -8,14 +8,15 @@
 **/
 
 function setup() {
-  createCanvas3D(600, 400);
+  createCanvas3D(windowWidth, windowHeight);
+  getOrbit().autoRotate = true;
   //Change background color of the scene
 
   environment(SUNSET);
   background3D("white"); 
 
   let albero = beginGroup();
-  diffuse("red");
+  diffuse("green");
   // sphere(0, 3, 0, 2);
   align(TOP);
   capsule(0, 2, 0, 2.5,2);
@@ -26,7 +27,7 @@ function setup() {
   let lato = 100;
   align(BOTTOM);
   diffuse("#27800A")
-  box(0,0,0,lato*5,1,lato*5);
+  box(0,0,0,lato,1,lato);
   
   for (let i = 0; i < 200; i++) {
     let x = random(-lato/2,lato/2);
@@ -43,4 +44,8 @@ function setup() {
 function draw() {
   // 🔍 Never create objects here, but don't forget to have it in your code:
   // leave empty for the moment
+}
+
+function windowResized() {
+  resizeCanvas3D(windowWidth,windowHeight);
 }
